@@ -1,0 +1,19 @@
+runtime: python38
+
+instance_class: F1
+
+handlers:
+# index files
+- url: /([^.]+)/?$  # urls with no dot in them
+  static_files: build/\1/index.html
+  upload: build/(.+)/index.html
+
+# site root
+- url: /
+  static_files: build/index.html
+  upload: build/index.html
+
+# everything else
+- url: /(.*)
+  static_files: build/\1
+  upload: build/(.*)
